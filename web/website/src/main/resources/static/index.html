@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset=utf-8>
+    <meta name=viewport content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+    <title>zachary's home</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Open Sans', 'Lantinghei SC', 'Microsoft YaHei', sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #container {
+            height: 100%;
+        }
+
+        .logo-container {
+            height: 70%;
+            background-color: #909399;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-container .logo-name {
+            font-size: 60px;
+            font-family: "Comic Sans MS", cursive, sans-serif;
+        }
+
+        .logo-container .profile {
+            margin: 0 20px;
+        }
+
+        .category-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30%;
+            min-height: 150px;
+            background-color: black;
+        }
+
+        .category-container .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 100px;
+            margin: 0 20px;
+            box-shadow: 0 0 0 3px #000, 0 0 0 6px #fff;
+        }
+
+        .category-container .avatar:hover {
+            cursor: pointer;
+            box-shadow: 0 0 0 3px #000, 0 0 0 6px #CE2323;
+            transition: all .2s ease-in-out;
+        }
+
+        .category-container .category {
+            display: block;
+            width: 50px;
+            height: 50px;
+            margin: 0 20px;
+        }
+
+        .category i.fas {
+            width: 50px;
+            border-radius: 50px;
+            line-height: 50px;
+            text-align: center;
+            color: black;
+            background-color: rgba(255, 255, 255, .3);
+        }
+
+        @media screen and (max-width: 767px) {
+            .category.res {
+                display: none;
+            }
+        }
+
+        .logo-container.transform {
+            background: url("//img.zacharyz.com/logo-bg.jpg") fixed bottom no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div class="logo-container" v-bind:class="{transform : isActive}">
+        <span v-if="show" class="logo-name" id="logo-name">{{logoName}}</span>
+        <div class="profile" v-if="hide">
+            <h3>个人简介：</h3>
+            <p>姓名：ZacharyCare</p>
+            <p>邮箱：zachary.care@protonmail.com</p>
+            <p>网易云：<a href="http://music.163.com/user/home?id=398729350" target="_blank" style="color: black">http://music.163.com/user/home?id=398729350</a>
+            </p>
+            <p>这短短的一生，我们最终都会失去。你不妨大胆一些，爱一个人，攀一座山，追一个梦。</p>
+        </div>
+    </div>
+    <div class="category-container">
+        <a class="category res" href="" target="_blank"><i class="fas fa-pencil-alt"></i></a>
+        <a class="category" href="" target="_blank"><i class="fas fa-code"></i></a>
+        <img src="//img.zacharyz.com/avatar.jpg" class="avatar" v-on:click="toggle">
+        <a class="category" href="image"><i class="fas fa-camera-retro"></i></a>
+        <a class="category res" href="http://music.163.com/user/home?id=398729350" target="_blank"><i
+                class="fas fa-music"></i></a>
+    </div>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+    var logo = new Vue({
+        el: "#container",
+        data: {
+            isActive: false,
+            show: true,
+            hide: false,
+            logoName: "zacharyz"
+        },
+        methods: {
+            toggle: function () {
+                this.isActive = !this.isActive;
+                this.show = !this.show;
+                this.hide = !this.hide;
+            }
+        }
+    })
+</script>
+</html>
