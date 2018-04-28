@@ -52,10 +52,10 @@
     </div>
 </body>
 <script>
-    new Vue({
+    var app = new Vue({
         el : '#app',
         data : {
-            msg : 'tishixinxi'
+            msg : ''
         },
         methods : {
             sub : function () {
@@ -63,7 +63,11 @@
                     username : this.$refs.username.value,
                     password : this.$refs.password.value
                 }).then(function (value) {
-                    console.log(value.data);
+                    console.log(value);
+                    if (value.data === 1) {
+                        window.location.href = "m";
+                    }
+                    app.msg = value.data;
                 }).catch(function (reason) {
                     console.log(reason);
                 })
