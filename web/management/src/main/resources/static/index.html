@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+    <title>管理平台登录页面</title>
+    <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/solid.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/fontawesome.css">
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Open Sans', 'Lantinghei SC', 'Microsoft YaHei', sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="app">
+        <div>
+            <h1>登录</h1>
+            <label>
+                用户名：
+                <input name="username" ref="username" autofocus>
+            </label>
+            <label>
+                密码：
+                <input name="password" ref="password">
+            </label>
+            <button @click="sub">
+                <i class="fas fa-arrow-circle-right"></i>
+            </button>
+            <div style="height: 22px;color: red;">{{msg}}</div>
+        </div>
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el : '#app',
+        data : {
+            msg : ''
+        },
+        methods : {
+            sub : function () {
+                axios.post("",{
+                    username : this.$refs.username.value,
+                    password : this.$refs.password.value
+                }).then(function (value) {
+                    console.log(value);
+                    if (value.data === 1) {
+                        window.location.href = "m";
+                    }
+                    app.msg = value.data;
+                }).catch(function (reason) {
+                    console.log(reason);
+                })
+            }
+        }
+    })
+</script>
+</html>

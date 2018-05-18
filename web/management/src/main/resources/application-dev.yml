@@ -8,6 +8,11 @@ spring:
     password: root
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
+  redis:
+    database: 0
+    host: 47.52.90.6
+    port: 6379
+    password: redis6379
 mybatis-plus:
   mapper-locations: classpath:/mapper/mapper-*.xml
   type-aliases-package: com.zacharyz.general.bean
